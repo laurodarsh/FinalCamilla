@@ -76,8 +76,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Icons\" />
+    <Content Include="Icons\101469-200.png" />
+    <Content Include="Icons\1600.png" />
+    <Content Include="Icons\17239-200.png" />
+    <Content Include="Icons\17241-200.png" />
+    <Content Include="Icons\delete-sign-icon-remove-button-black-vector-21584667.jpg" />
+    <Content Include="Icons\delete-sign.png" />
+    <Content Include="Icons\download.png" />
+    <Content Include="Icons\images %281%29.png" />
+    <Content Include="Icons\images.png" />
+    <Content Include="Icons\Edit.png" />
+    <Content Include="Icons\Search.png" />
+    <Content Include="Icons\Plus.png" />
+    <Content Include="Icons\_user_profile_icon_1108089.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
