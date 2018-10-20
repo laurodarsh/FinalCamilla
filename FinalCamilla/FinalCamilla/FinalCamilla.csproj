@@ -46,14 +46,80 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\CategoryAllForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CategoryAllForm.Designer.cs">
+      <DependentUpon>CategoryAllForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CategotyDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CategotyDetailsForm.Designer.cs">
+      <DependentUpon>CategotyDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\HomeForm.Designer.cs">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\LogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LogForm.Designer.cs">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProductAllForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProductAllForm.Designer.cs">
+      <DependentUpon>ProductAllForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProductDatailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProductDatailsForm.Designer.cs">
+      <DependentUpon>ProductDatailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserAllForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserAllForm.Designer.cs">
+      <DependentUpon>UserAllForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserDetailsForm.Designer.cs">
+      <DependentUpon>UserDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserProfileAllForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserProfileAllForm.Designer.cs">
+      <DependentUpon>UserProfileAllForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserProfileDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserProfileDetailsForm.Designer.cs">
+      <DependentUpon>UserProfileDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\HomeForm.resx">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +128,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -90,6 +157,7 @@
     <Content Include="Icons\images %281%29.png" />
     <Content Include="Icons\images.png" />
     <Content Include="Icons\Edit.png" />
+    <None Include="Icons\log-128.png" />
     <Content Include="Icons\Search.png" />
     <Content Include="Icons\Plus.png" />
     <Content Include="Icons\_user_profile_icon_1108089.png" />
