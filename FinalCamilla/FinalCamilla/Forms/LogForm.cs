@@ -16,5 +16,22 @@ namespace FinalCamilla.Forms
         {
             InitializeComponent();
         }
+
+        private void pbxBack_Click(object sender, EventArgs e)
+        {
+            HomeForm hf = new HomeForm();
+            hf.Show();
+            this.Close();
+        }
+
+        private void pbxSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pbxClean_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

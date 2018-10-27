@@ -16,5 +16,10 @@ namespace FinalCamilla.Forms
         {
             InitializeComponent();
         }
+
+        private void pbxEdit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

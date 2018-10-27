@@ -58,6 +58,47 @@ namespace FinalCamilla.Forms
             pbxLog.BackColor = Color.Transparent;
                 
         }
-        
+
+        private void pbxProduct_Click(object sender, EventArgs e)
+        {
+            ProductAllForm paf = new ProductAllForm();
+            paf.Show();
+            this.Close();
+        }
+
+        private void pbxCategory_Click(object sender, EventArgs e)
+        {
+            CategoryAllForm caf = new CategoryAllForm();
+            caf.Show();
+            this.Close();
+        }
+
+        private void pbxUser_Click(object sender, EventArgs e)
+        {
+            UserAllForm uaf = new UserAllForm();
+            uaf.Show();
+            this.Close();
+        }
+
+        private void pbxProfile_Click(object sender, EventArgs e)
+        {
+            UserProfileAllForm upaf = new UserProfileAllForm();
+            upaf.Show();
+            this.Close();
+        }
+
+        private void pbxLog_Click(object sender, EventArgs e)
+        {
+            LogForm lf = new LogForm();
+            lf.Show();
+            this.Close();
+        }
+
+        private void pbxBack_Click(object sender, EventArgs e)
+        {
+            LoginForm lgf = new LoginForm();
+            lgf.Show();
+            this.Close();
+        }
     }
 }

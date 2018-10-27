@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Category.cs" />
+    <Compile Include="Classes\Log.cs" />
+    <Compile Include="Classes\Product.cs" />
+    <Compile Include="Classes\User.cs" />
+    <Compile Include="Classes\UserProfile.cs" />
     <Compile Include="Forms\CategoryAllForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,11 +119,38 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\CategoryAllForm.resx">
+      <DependentUpon>CategoryAllForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CategotyDetailsForm.resx">
+      <DependentUpon>CategotyDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LogForm.resx">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProductAllForm.resx">
+      <DependentUpon>ProductAllForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProductDatailsForm.resx">
+      <DependentUpon>ProductDatailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserAllForm.resx">
+      <DependentUpon>UserAllForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserDetailsForm.resx">
+      <DependentUpon>UserDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserProfileAllForm.resx">
+      <DependentUpon>UserProfileAllForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserProfileDetailsForm.resx">
+      <DependentUpon>UserProfileDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -143,9 +175,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Icons\101469-200.png" />
     <Content Include="Icons\1600.png" />
@@ -157,6 +187,7 @@
     <Content Include="Icons\images %281%29.png" />
     <Content Include="Icons\images.png" />
     <Content Include="Icons\Edit.png" />
+    <None Include="Resources\lvlup.png" />
     <None Include="Icons\log-128.png" />
     <Content Include="Icons\Search.png" />
     <Content Include="Icons\Plus.png" />

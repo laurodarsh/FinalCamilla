@@ -12,6 +12,9 @@ namespace FinalCamilla.Forms
 {
     public partial class LoginForm : Form
     {
+        
+
+
         public LoginForm()
         {
             InitializeComponent();
@@ -19,7 +22,7 @@ namespace FinalCamilla.Forms
 
         private void lblForgotPassword_MouseEnter(object sender, EventArgs e)
         {
-
+            
         }
 
         private void lblForgotPassword_MouseLeave(object sender, EventArgs e)
@@ -31,5 +34,17 @@ namespace FinalCamilla.Forms
         {
 
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            HomeForm lf = new HomeForm();
+            lf.Show();
+            this.Close();
+
+        }
+
+
+
+
     }
 }
