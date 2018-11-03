@@ -93,6 +93,7 @@
     <Compile Include="Forms\ProductDatailsForm.Designer.cs">
       <DependentUpon>ProductDatailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UseProfile.cs" />
     <Compile Include="Forms\UserAllForm.cs">
       <SubType>Form</SubType>
     </Compile>

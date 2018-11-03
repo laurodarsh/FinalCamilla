@@ -12,7 +12,7 @@ namespace FinalCamilla.Forms
 {
     public partial class LoginForm : Form
     {
-        
+        string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096";
 
 
         public LoginForm()
@@ -43,8 +43,9 @@ namespace FinalCamilla.Forms
 
         }
 
-
-
-
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://levelupacademy.com.br/");
+        }
     }
 }

@@ -62,8 +62,11 @@ namespace FinalCamilla.Classes
             
         }
 
-
-
-
+        public Category(int id, string name, bool active)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Active = active;
+        }
     }
 }

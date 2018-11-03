@@ -34,13 +34,15 @@
             this.tbxPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblForgotPassword = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUser
             // 
             this.lblUser.AutoSize = true;
             this.lblUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.Location = new System.Drawing.Point(60, 74);
+            this.lblUser.Location = new System.Drawing.Point(195, 163);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(64, 18);
             this.lblUser.TabIndex = 0;
@@ -50,7 +52,7 @@
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(70, 128);
+            this.lblPassword.Location = new System.Drawing.Point(205, 189);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(54, 18);
             this.lblPassword.TabIndex = 1;
@@ -58,21 +60,21 @@
             // 
             // tbxUser
             // 
-            this.tbxUser.Location = new System.Drawing.Point(130, 74);
+            this.tbxUser.Location = new System.Drawing.Point(265, 161);
             this.tbxUser.Name = "tbxUser";
             this.tbxUser.Size = new System.Drawing.Size(100, 20);
             this.tbxUser.TabIndex = 2;
             // 
             // tbxPassword
             // 
-            this.tbxPassword.Location = new System.Drawing.Point(130, 128);
+            this.tbxPassword.Location = new System.Drawing.Point(265, 187);
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.Size = new System.Drawing.Size(100, 20);
             this.tbxPassword.TabIndex = 3;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(140, 172);
+            this.btnLogin.Location = new System.Drawing.Point(244, 236);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 4;
@@ -84,7 +86,7 @@
             // 
             this.lblForgotPassword.AutoSize = true;
             this.lblForgotPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblForgotPassword.Location = new System.Drawing.Point(122, 213);
+            this.lblForgotPassword.Location = new System.Drawing.Point(228, 293);
             this.lblForgotPassword.Name = "lblForgotPassword";
             this.lblForgotPassword.Size = new System.Drawing.Size(108, 13);
             this.lblForgotPassword.TabIndex = 5;
@@ -93,11 +95,23 @@
             this.lblForgotPassword.MouseEnter += new System.EventHandler(this.lblForgotPassword_MouseEnter);
             this.lblForgotPassword.MouseLeave += new System.EventHandler(this.lblForgotPassword_MouseLeave);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::FinalCamilla.Properties.Resources.lvlup;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(177, 369);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(347, 321);
+            this.ClientSize = new System.Drawing.Size(558, 393);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblForgotPassword);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbxPassword);
@@ -106,6 +120,7 @@
             this.Controls.Add(this.lblUser);
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,5 +134,6 @@
         private System.Windows.Forms.TextBox tbxPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lblForgotPassword;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

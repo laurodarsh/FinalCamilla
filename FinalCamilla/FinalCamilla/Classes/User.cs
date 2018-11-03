@@ -109,7 +109,14 @@ namespace FinalCamilla.Classes
             
         }
 
-
-
+        public User(int id, string name, string password, string email, UserProfile userProfile, bool active)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Password = password;
+            this.Email = email;
+            this.UserProfile = userProfile;
+            this.Active = active;
+        }
     }
 }

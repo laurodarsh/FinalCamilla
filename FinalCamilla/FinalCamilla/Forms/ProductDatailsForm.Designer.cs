@@ -33,10 +33,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.tbxName = new System.Windows.Forms.TextBox();
+            this.tbxPrice = new System.Windows.Forms.TextBox();
+            this.cbmCategory = new System.Windows.Forms.ComboBox();
+            this.cbxActive = new System.Windows.Forms.CheckBox();
             this.pbxDelete = new System.Windows.Forms.PictureBox();
             this.pbxSave = new System.Windows.Forms.PictureBox();
             this.pbxBack = new System.Windows.Forms.PictureBox();
@@ -85,37 +85,37 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Categoria:";
             // 
-            // textBox1
+            // tbxName
             // 
-            this.textBox1.Location = new System.Drawing.Point(161, 46);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.tbxName.Location = new System.Drawing.Point(161, 46);
+            this.tbxName.Name = "tbxName";
+            this.tbxName.Size = new System.Drawing.Size(100, 20);
+            this.tbxName.TabIndex = 4;
             // 
-            // textBox2
+            // tbxPrice
             // 
-            this.textBox2.Location = new System.Drawing.Point(79, 86);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
+            this.tbxPrice.Location = new System.Drawing.Point(79, 86);
+            this.tbxPrice.Name = "tbxPrice";
+            this.tbxPrice.Size = new System.Drawing.Size(100, 20);
+            this.tbxPrice.TabIndex = 5;
             // 
-            // comboBox1
+            // cbmCategory
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(107, 127);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 6;
+            this.cbmCategory.FormattingEnabled = true;
+            this.cbmCategory.Location = new System.Drawing.Point(107, 127);
+            this.cbmCategory.Name = "cbmCategory";
+            this.cbmCategory.Size = new System.Drawing.Size(121, 21);
+            this.cbmCategory.TabIndex = 6;
             // 
-            // checkBox1
+            // cbxActive
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(73, 175);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbxActive.AutoSize = true;
+            this.cbxActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxActive.Location = new System.Drawing.Point(73, 175);
+            this.cbxActive.Name = "cbxActive";
+            this.cbxActive.Size = new System.Drawing.Size(15, 14);
+            this.cbxActive.TabIndex = 7;
+            this.cbxActive.UseVisualStyleBackColor = true;
             // 
             // pbxDelete
             // 
@@ -158,10 +158,10 @@
             this.Controls.Add(this.pbxDelete);
             this.Controls.Add(this.pbxSave);
             this.Controls.Add(this.pbxBack);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.cbxActive);
+            this.Controls.Add(this.cbmCategory);
+            this.Controls.Add(this.tbxPrice);
+            this.Controls.Add(this.tbxName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -182,10 +182,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox tbxName;
+        private System.Windows.Forms.TextBox tbxPrice;
+        private System.Windows.Forms.ComboBox cbmCategory;
+        private System.Windows.Forms.CheckBox cbxActive;
         private System.Windows.Forms.PictureBox pbxDelete;
         private System.Windows.Forms.PictureBox pbxSave;
         private System.Windows.Forms.PictureBox pbxBack;

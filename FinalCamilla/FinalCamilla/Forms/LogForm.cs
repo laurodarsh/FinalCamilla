@@ -12,6 +12,7 @@ namespace FinalCamilla.Forms
 {
     public partial class LogForm : Form
     {
+        string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096";
         public LogForm()
         {
             InitializeComponent();

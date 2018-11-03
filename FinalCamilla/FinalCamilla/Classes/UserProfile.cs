@@ -59,5 +59,15 @@ namespace FinalCamilla.Classes
             this.Name = name;
             this.Active = active;
         }
+        public UserProfile()
+        {
+            
+        }
+        public UserProfile(int id, string name, bool active)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Active = active;
+        }
     }
 }

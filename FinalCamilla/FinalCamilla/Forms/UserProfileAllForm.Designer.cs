@@ -110,6 +110,7 @@
             this.pbxPlus.Size = new System.Drawing.Size(55, 46);
             this.pbxPlus.TabIndex = 12;
             this.pbxPlus.TabStop = false;
+            this.pbxPlus.Click += new System.EventHandler(this.pbxPlus_Click);
             // 
             // pbxEdit
             // 

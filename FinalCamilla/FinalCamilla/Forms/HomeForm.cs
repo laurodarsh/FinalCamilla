@@ -63,42 +63,42 @@ namespace FinalCamilla.Forms
         {
             ProductAllForm paf = new ProductAllForm();
             paf.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void pbxCategory_Click(object sender, EventArgs e)
         {
             CategoryAllForm caf = new CategoryAllForm();
             caf.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void pbxUser_Click(object sender, EventArgs e)
         {
             UserAllForm uaf = new UserAllForm();
             uaf.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void pbxProfile_Click(object sender, EventArgs e)
         {
             UserProfileAllForm upaf = new UserProfileAllForm();
             upaf.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void pbxLog_Click(object sender, EventArgs e)
         {
             LogForm lf = new LogForm();
             lf.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
             LoginForm lgf = new LoginForm();
             lgf.Show();
-            this.Close();
+            this.Hide();
         }
     }
 }

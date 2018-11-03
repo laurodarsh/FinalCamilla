@@ -21,5 +21,12 @@ namespace FinalCamilla.Forms
         {
 
         }
+
+        private void pbxPlus_Click(object sender, EventArgs e)
+        {
+            UserDetailsForm udf = new UserDetailsForm();
+            udf.Show();
+            this.Hide();
+        }
     }
 }
