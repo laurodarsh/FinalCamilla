@@ -81,6 +81,8 @@
             this.pbxClean.TabIndex = 8;
             this.pbxClean.TabStop = false;
             this.pbxClean.Click += new System.EventHandler(this.pbxClean_Click);
+            this.pbxClean.MouseEnter += new System.EventHandler(this.pbxClean_MouseEnter);
+            this.pbxClean.MouseLeave += new System.EventHandler(this.pbxClean_MouseLeave);
             // 
             // pbxSearchCategory
             // 
@@ -92,6 +94,8 @@
             this.pbxSearchCategory.TabIndex = 5;
             this.pbxSearchCategory.TabStop = false;
             this.pbxSearchCategory.Click += new System.EventHandler(this.pbxSearchCategory_Click);
+            this.pbxSearchCategory.MouseEnter += new System.EventHandler(this.pbxSearchCategory_MouseEnter);
+            this.pbxSearchCategory.MouseLeave += new System.EventHandler(this.pbxSearchCategory_MouseLeave);
             // 
             // pbxBack
             // 

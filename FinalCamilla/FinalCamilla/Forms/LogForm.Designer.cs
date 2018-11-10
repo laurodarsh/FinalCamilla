@@ -30,11 +30,11 @@
         {
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvLOG = new System.Windows.Forms.DataGridView();
             this.pbxClean = new System.Windows.Forms.PictureBox();
             this.pbxSearch = new System.Windows.Forms.PictureBox();
             this.pbxBack = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLOG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxClean)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBack)).BeginInit();
@@ -57,13 +57,13 @@
             this.lblSearch.TabIndex = 15;
             this.lblSearch.Text = "Pesquisar:";
             // 
-            // dataGridView1
+            // dgvLOG
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 114);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(517, 252);
-            this.dataGridView1.TabIndex = 9;
+            this.dgvLOG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLOG.Location = new System.Drawing.Point(12, 114);
+            this.dgvLOG.Name = "dgvLOG";
+            this.dgvLOG.Size = new System.Drawing.Size(517, 252);
+            this.dgvLOG.TabIndex = 9;
             // 
             // pbxClean
             // 
@@ -75,6 +75,8 @@
             this.pbxClean.TabIndex = 17;
             this.pbxClean.TabStop = false;
             this.pbxClean.Click += new System.EventHandler(this.pbxClean_Click);
+            this.pbxClean.DragEnter += new System.Windows.Forms.DragEventHandler(this.pbxClean_DragEnter);
+            this.pbxClean.DragLeave += new System.EventHandler(this.pbxClean_DragLeave);
             // 
             // pbxSearch
             // 
@@ -86,6 +88,8 @@
             this.pbxSearch.TabIndex = 14;
             this.pbxSearch.TabStop = false;
             this.pbxSearch.Click += new System.EventHandler(this.pbxSearch_Click);
+            this.pbxSearch.DragLeave += new System.EventHandler(this.pbxSearch_DragLeave);
+            this.pbxSearch.MouseEnter += new System.EventHandler(this.pbxSearch_MouseEnter);
             // 
             // pbxBack
             // 
@@ -108,10 +112,10 @@
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.pbxSearch);
             this.Controls.Add(this.pbxBack);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvLOG);
             this.Name = "LogForm";
             this.Text = "LogForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLOG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxClean)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBack)).EndInit();
@@ -127,6 +131,6 @@
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.PictureBox pbxSearch;
         private System.Windows.Forms.PictureBox pbxBack;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvLOG;
     }
 }

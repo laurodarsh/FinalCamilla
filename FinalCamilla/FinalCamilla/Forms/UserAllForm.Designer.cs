@@ -100,6 +100,7 @@
             this.pbxBack.Size = new System.Drawing.Size(58, 46);
             this.pbxBack.TabIndex = 13;
             this.pbxBack.TabStop = false;
+            this.pbxBack.Click += new System.EventHandler(this.pbxBack_Click);
             // 
             // pbxPlus
             // 

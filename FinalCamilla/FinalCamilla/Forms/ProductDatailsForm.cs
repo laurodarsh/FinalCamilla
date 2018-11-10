@@ -17,7 +17,7 @@ namespace FinalCamilla.Forms
     public partial class ProductDatailsForm : Form
     {
         string name = "";
-        int price = 0;
+        float price = 0;
         string category = "";
         bool active = false;
 
@@ -63,7 +63,9 @@ namespace FinalCamilla.Forms
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-
+            ProductAllForm paf = new ProductAllForm();
+            paf.Show();
+            this.Hide();
         }
 
         private void pbxSave_Click(object sender, EventArgs e)
@@ -109,7 +111,7 @@ namespace FinalCamilla.Forms
         void GetData()
         {
             name = tbxName.Text;
-            price = Int32.Parse(tbxPrice.Text);
+            price = float.Parse(tbxPrice.Text);
             category= cbmCategory.Text;
             if (cbxActive.Checked)
             {

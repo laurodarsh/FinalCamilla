@@ -80,7 +80,6 @@
             this.tbxName.Name = "tbxName";
             this.tbxName.Size = new System.Drawing.Size(100, 20);
             this.tbxName.TabIndex = 31;
-            
             // 
             // lblActive
             // 
@@ -186,6 +185,7 @@
             this.pbxBack.Size = new System.Drawing.Size(58, 46);
             this.pbxBack.TabIndex = 35;
             this.pbxBack.TabStop = false;
+            this.pbxBack.Click += new System.EventHandler(this.pbxBack_Click);
             // 
             // UserDetailsForm
             // 

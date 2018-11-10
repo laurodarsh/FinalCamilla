@@ -123,5 +123,11 @@ namespace FinalCamilla.Forms
             cbxActive.Checked = false;
         }
 
+        private void pbxBack_Click(object sender, EventArgs e)
+        {
+            UserDetailsForm udf = new UserDetailsForm();
+            udf.Show();
+            this.Close();
+        }
     }
 }
