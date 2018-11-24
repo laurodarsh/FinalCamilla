@@ -65,11 +65,18 @@
             // 
             // dgvProduct
             // 
+            this.dgvProduct.AllowUserToAddRows = false;
+            this.dgvProduct.AllowUserToDeleteRows = false;
+            this.dgvProduct.AllowUserToResizeColumns = false;
+            this.dgvProduct.AllowUserToResizeRows = false;
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProduct.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvProduct.Location = new System.Drawing.Point(33, 89);
+            this.dgvProduct.MultiSelect = false;
             this.dgvProduct.Name = "dgvProduct";
+            this.dgvProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProduct.Size = new System.Drawing.Size(517, 252);
-            this.dgvProduct.TabIndex = 9;
+            this.dgvProduct.TabIndex = 0;
             // 
             // pbxClean
             // 
@@ -108,7 +115,7 @@
             // 
             this.pbxPlus.BackgroundImage = global::FinalCamilla.Properties.Resources.Plus;
             this.pbxPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbxPlus.Location = new System.Drawing.Point(456, 386);
+            this.pbxPlus.Location = new System.Drawing.Point(395, 386);
             this.pbxPlus.Name = "pbxPlus";
             this.pbxPlus.Size = new System.Drawing.Size(55, 46);
             this.pbxPlus.TabIndex = 12;
@@ -119,7 +126,7 @@
             // 
             this.pbxEdit.BackgroundImage = global::FinalCamilla.Properties.Resources.Edit;
             this.pbxEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbxEdit.Location = new System.Drawing.Point(383, 386);
+            this.pbxEdit.Location = new System.Drawing.Point(456, 386);
             this.pbxEdit.Name = "pbxEdit";
             this.pbxEdit.Size = new System.Drawing.Size(55, 46);
             this.pbxEdit.TabIndex = 11;

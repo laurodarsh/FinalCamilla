@@ -72,9 +72,13 @@ namespace FinalCamilla.Forms
 
         private void pbxEdit_Click(object sender, EventArgs e)
         {
-            UserDetailsForm udf = new UserDetailsForm();
+           int idCategory = Int32.Parse(dgvUser.SelectedRows[0].Cells[0].Value.ToString());
+
+            UserDetailsForm udf = new UserDetailsForm(idCategory);
             udf.Show();
-            this.Hide();
+
+            this.Close();
+           
         }
 
         private void pbxPlus_Click(object sender, EventArgs e)
@@ -89,6 +93,44 @@ namespace FinalCamilla.Forms
             HomeForm hf = new HomeForm();
             hf.Show();
             this.Close();
+        }
+
+        private void pbxDelete_Click(object sender, EventArgs e)
+        {
+            int idUser = Int32.Parse(dgvUser.SelectedRows[0].Cells[0].Value.ToString());
+
+            SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+            try
+            {
+                sqlConnect.Open();
+                string sql = "UPDATE [USER] SET ACTIVE = @active WHERE ID = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                cmd.Parameters.Add(new SqlParameter("@id", idUser));
+                cmd.Parameters.Add(new SqlParameter("@active", false));
+
+                cmd.ExecuteNonQuery();
+                
+                ShowData();
+                MessageBox.Show("Usuário inativo!");
+                
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Erro ao editar este usuário!" + "\n\n" + Ex.Message);
+                throw;
+            }
+            finally
+            {
+                sqlConnect.Close();
+            }
+        }
+
+        private void pbxSearch_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

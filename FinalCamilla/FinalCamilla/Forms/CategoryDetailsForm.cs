@@ -12,18 +12,17 @@ using System.Windows.Forms;
 
 namespace FinalCamilla.Forms
 {
-    public partial class UserProfileDetailsForm : Form
+    public partial class CategoryDetailsForm : Form
     {
         string name = "";
         bool active = false;
         string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096;user id=levelupacademy_SQLLogin_1;pwd=3wwate8gu1;data source=StockControl.mssql.somee.com;persist security info=False;initial catalog=StockControl";
-
-        public UserProfileDetailsForm(int idUserProfile)
+        public CategoryDetailsForm(int idCategory)
         {
 
             InitializeComponent();
 
-            lblID.Text = idUserProfile.ToString();
+            lblID.Text = idCategory.ToString(); 
 
             SqlConnection sqlConnect = new SqlConnection(connectionString);
 
@@ -31,23 +30,23 @@ namespace FinalCamilla.Forms
             {
                 try
                 {
-
+                    
                     sqlConnect.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM USER_PROFILE WHERE ID = @id", sqlConnect);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM CATEGORY WHERE ID = @id", sqlConnect);
+                   
 
+                    cmd.Parameters.Add(new SqlParameter("@id", idCategory));
 
-                    cmd.Parameters.Add(new SqlParameter("@id", idUserProfile));
+                    Category category = new Category(); 
 
-                    UserProfile userProfile = new UserProfile();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlDataReader reader = cmd.ExecuteReader()) 
                     {
                         while (reader.Read())
                         {
-                            userProfile.Id = Int32.Parse(reader["ID"].ToString());
-                            userProfile.Name = reader["NAME"].ToString();
-                            userProfile.Active = bool.Parse(reader["ACTIVE"].ToString());
+                            category.Id = Int32.Parse(reader["ID"].ToString());
+                            category.Name = reader["NAME"].ToString();
+                            category.Active = bool.Parse(reader["ACTIVE"].ToString());
 
 
 
@@ -56,14 +55,14 @@ namespace FinalCamilla.Forms
                         }
                     }
 
-                    tbxName.Text = userProfile.Name;
-                    cbxActive.Checked = userProfile.Active;
+                    tbxCategory.Text = category.Name;
+                    cbxActive.Checked = category.Active;
 
 
                 }
                 catch (Exception EX)
                 {
-                    
+                    MessageBox.Show("Problema ao carregar!");
                     throw;
                 }
                 finally
@@ -74,9 +73,16 @@ namespace FinalCamilla.Forms
             }
         }
 
-        public UserProfileDetailsForm()
+        public CategoryDetailsForm()
         {
             InitializeComponent();
+        }
+
+        private void pbxBack_Click(object sender, EventArgs e)
+        {
+            CategoryAllForm caf = new CategoryAllForm();
+            caf.Show();
+            this.Close();
         }
 
         private void pbxSave_Click(object sender, EventArgs e)
@@ -85,17 +91,15 @@ namespace FinalCamilla.Forms
             try
             {
                 GetData();
-                UserProfile u = new UserProfile(name, active);
-
-
-                sqlConnect.Open();
-                string sql = "INSERT INTO USER_PROFILE(NAME, ACTIVE) VALUES (@name, @active)";
+                Category c = new Category(name, active);
+                                   
+                    
+             sqlConnect.Open();   string sql = "INSERT INTO CATEGORY(NAME, ACTIVE) VALUES (@name, @active)";
 
                 SqlCommand cmd = new SqlCommand(sql, sqlConnect);
 
-                cmd.Parameters.Add(new SqlParameter("@name", u.Name));
-                cmd.Parameters.Add(new SqlParameter("@active", u.Active));
-
+                cmd.Parameters.Add(new SqlParameter("@name", c.Name));
+                cmd.Parameters.Add(new SqlParameter("@active", c.Active));
 
                 cmd.ExecuteNonQuery();
 
@@ -115,9 +119,42 @@ namespace FinalCamilla.Forms
 
         }
 
+        private void pbxDelete_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblID.Text)) 
+            {
+                SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+                try
+ 
+                {
+                    sqlConnect.Open();
+                    string sql = "UPDATE CATEGORY SET ACTIVE = @active WHERE ID = @id";
+
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                    cmd.Parameters.Add(new SqlParameter("@id", lblID.Text));
+                    cmd.Parameters.Add(new SqlParameter("@active", false));
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("categoria inativa!");
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("Erro ao desativar esta categoria!" + "\n\n" + Ex.Message);
+                    throw;
+                }
+                finally
+                {
+                    sqlConnect.Close();
+                }
+                }
+        }
+
         void GetData()
         {
-            name = tbxName.Text;
+            name = tbxCategory.Text;
             if (cbxActive.Checked)
             {
                 active = true;
@@ -129,49 +166,13 @@ namespace FinalCamilla.Forms
         }
         void CleanData()
         {
-            tbxName.Text = "";
+            tbxCategory.Text = "";
             cbxActive.Checked = false;
         }
 
-        private void pbxBack_Click(object sender, EventArgs e)
-        {
-            UserProfileAllForm upaf = new UserProfileAllForm();
-            upaf.Show();
-            this.Hide();
-                
-        }
-
-        private void pbxDelete_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(lblID.Text))
-            {
-                SqlConnection sqlConnect = new SqlConnection(connectionString);
-
-                try
-
-                {
-                    sqlConnect.Open();
-                    string sql = "UPDATE USER_PROFILE SET ACTIVE = @active WHERE ID = @id";
-
-                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
-
-                    cmd.Parameters.Add(new SqlParameter("@id", lblID.Text));
-                    cmd.Parameters.Add(new SqlParameter("@active", false));
-
-                    cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("usuário inativo!");
-                }
-                catch (Exception Ex)
-                {
-                    MessageBox.Show("Erro ao desativar este usuário !" + "\n\n" + Ex.Message);
-                    throw;
-                }
-                finally
-                {
-                    sqlConnect.Close();
-                }
-            }
-        }
+        
     }
+
+
 }
+

@@ -58,11 +58,11 @@
     <Compile Include="Forms\CategoryAllForm.Designer.cs">
       <DependentUpon>CategoryAllForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CategotyDetailsForm.cs">
+    <Compile Include="Forms\CategoryDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CategotyDetailsForm.Designer.cs">
-      <DependentUpon>CategotyDetailsForm.cs</DependentUpon>
+    <Compile Include="Forms\CategoryDetailsForm.Designer.cs">
+      <DependentUpon>CategoryDetailsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\HomeForm.cs">
       <SubType>Form</SubType>
@@ -88,13 +88,12 @@
     <Compile Include="Forms\ProductAllForm.Designer.cs">
       <DependentUpon>ProductAllForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ProductDatailsForm.cs">
+    <Compile Include="Forms\ProductDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ProductDatailsForm.Designer.cs">
-      <DependentUpon>ProductDatailsForm.cs</DependentUpon>
+    <Compile Include="Forms\ProductDetailsForm.Designer.cs">
+      <DependentUpon>ProductDetailsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UseProfile.cs" />
     <Compile Include="Forms\UserAllForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,8 +123,8 @@
     <EmbeddedResource Include="Forms\CategoryAllForm.resx">
       <DependentUpon>CategoryAllForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CategotyDetailsForm.resx">
-      <DependentUpon>CategotyDetailsForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CategoryDetailsForm.resx">
+      <DependentUpon>CategoryDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
@@ -139,8 +138,8 @@
     <EmbeddedResource Include="Forms\ProductAllForm.resx">
       <DependentUpon>ProductAllForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ProductDatailsForm.resx">
-      <DependentUpon>ProductDatailsForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ProductDetailsForm.resx">
+      <DependentUpon>ProductDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserAllForm.resx">
       <DependentUpon>UserAllForm.cs</DependentUpon>

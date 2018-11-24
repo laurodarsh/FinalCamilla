@@ -1,6 +1,6 @@
 ﻿namespace FinalCamilla.Forms
 {
-    partial class CategotyDetailsForm
+    partial class CategoryDetailsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategotyDetailsForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryDetailsForm));
             this.cbxActive = new System.Windows.Forms.CheckBox();
             this.tbxCategory = new System.Windows.Forms.TextBox();
             this.lblActive = new System.Windows.Forms.Label();
@@ -36,6 +36,7 @@
             this.pbxDelete = new System.Windows.Forms.PictureBox();
             this.pbxSave = new System.Windows.Forms.PictureBox();
             this.pbxBack = new System.Windows.Forms.PictureBox();
+            this.lblID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBack)).BeginInit();
@@ -111,11 +112,21 @@
             this.pbxBack.TabStop = false;
             this.pbxBack.Click += new System.EventHandler(this.pbxBack_Click);
             // 
-            // CategotyDetailsForm
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(209, 110);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(0, 13);
+            this.lblID.TabIndex = 27;
+            this.lblID.Visible = false;
+            // 
+            // CategoryDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(439, 274);
+            this.Controls.Add(this.lblID);
             this.Controls.Add(this.pbxDelete);
             this.Controls.Add(this.pbxSave);
             this.Controls.Add(this.pbxBack);
@@ -123,7 +134,7 @@
             this.Controls.Add(this.tbxCategory);
             this.Controls.Add(this.lblActive);
             this.Controls.Add(this.lblCategory);
-            this.Name = "CategotyDetailsForm";
+            this.Name = "CategoryDetailsForm";
             this.Text = "CategotyDetailsForm";
             ((System.ComponentModel.ISupportInitialize)(this.pbxDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSave)).EndInit();
@@ -142,5 +153,6 @@
         private System.Windows.Forms.TextBox tbxCategory;
         private System.Windows.Forms.Label lblActive;
         private System.Windows.Forms.Label lblCategory;
+        private System.Windows.Forms.Label lblID;
     }
 }

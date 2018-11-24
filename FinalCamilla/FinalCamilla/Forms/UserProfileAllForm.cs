@@ -77,15 +77,51 @@ namespace FinalCamilla.Forms
 
         private void pbxEdit_Click(object sender, EventArgs e)
         {
-            UserProfileDetailsForm updf = new UserProfileDetailsForm();
+                int idUserProfile = Int32.Parse(dgvProfile.SelectedRows[0].Cells[0].Value.ToString());
+
+            UserProfileDetailsForm updf = new UserProfileDetailsForm(idUserProfile);
             updf.Show();
-            this.Hide();
+
+            this.Close();
         }
         private void pbxBack_Click(object sender, EventArgs e)
         {
             HomeForm hf = new HomeForm();
             hf.Show();
             this.Close();
+        }
+
+        private void pbxDelete_Click(object sender, EventArgs e)
+        {
+            int idUserProfile = Int32.Parse(dgvProfile.SelectedRows[0].Cells[0].Value.ToString());
+
+            SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+            try
+            {
+                sqlConnect.Open();
+                string sql = "UPDATE USER_PROFILE SET ACTIVE = @active WHERE ID = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                cmd.Parameters.Add(new SqlParameter("@id", idUserProfile));
+                cmd.Parameters.Add(new SqlParameter("@active", false));
+
+                cmd.ExecuteNonQuery();
+
+                ShowData();
+                MessageBox.Show("Usuário inativo!");
+                
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Erro ao editar este usuário!" + "\n\n" + Ex.Message);
+                throw;
+            }
+            finally
+            {
+                sqlConnect.Close();
+            }
         }
     }
 }

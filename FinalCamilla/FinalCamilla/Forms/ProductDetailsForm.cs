@@ -14,7 +14,7 @@ namespace FinalCamilla.Forms
 {
 
 
-    public partial class ProductDatailsForm : Form
+    public partial class ProductDetailsForm : Form
     {
         string name = "";
         float price = 0;
@@ -23,9 +23,70 @@ namespace FinalCamilla.Forms
 
         string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096;user id=levelupacademy_SQLLogin_1;pwd=3wwate8gu1;data source=StockControl.mssql.somee.com;persist security info=False;initial catalog=StockControl";
 
+
+
         List<Category> categories = new List<Category>();
 
-        public ProductDatailsForm()
+        public ProductDetailsForm(int idProduct)
+        {
+
+            InitializeComponent();
+            cbmCategory.DisplayMember = "NAME";
+            LoadComboBox();
+
+            lblID.Text = idProduct.ToString(); 
+
+            SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+            if (!string.IsNullOrEmpty(lblID.Text))
+            {
+                try
+                {
+                   
+                    sqlConnect.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM PRODUCT WHERE ID = @id", sqlConnect);
+                 
+
+                    cmd.Parameters.Add(new SqlParameter("@id", idProduct));
+
+                    Product product = new Product(); 
+
+                    using (SqlDataReader reader = cmd.ExecuteReader()) 
+                    {
+                        while (reader.Read())
+                        {
+                            product.Id = Int32.Parse(reader["ID"].ToString());
+                            product.Name = reader["NAME"].ToString();
+                            product.Active = bool.Parse(reader["ACTIVE"].ToString());
+                            product.Price = float.Parse(reader["PRICE"].ToString());
+
+
+
+
+                        }
+                    }
+
+                    tbxName.Text = product.Name;
+                    cbxActive.Checked = product.Active;
+                    tbxPrice.Text = product.Price.ToString();
+
+                }
+                catch (Exception EX)
+                {
+                    MessageBox.Show("Erro ao carregar o produto");
+
+                    throw;
+                }
+                finally
+                {
+                   
+                    sqlConnect.Close();
+                }
+            }
+        }
+
+        public ProductDetailsForm()
         {
             InitializeComponent();
             cbmCategory.DisplayMember = "NAME";
@@ -33,6 +94,7 @@ namespace FinalCamilla.Forms
         }
         void LoadComboBox()
         {
+
             SqlConnection cn = new SqlConnection(connectionString);
 
             try
@@ -105,7 +167,35 @@ namespace FinalCamilla.Forms
 
         private void pbxDelete_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(lblID.Text))
+            {
+                SqlConnection sqlConnect = new SqlConnection(connectionString);
 
+                try
+
+                {
+                    sqlConnect.Open();
+                    string sql = "UPDATE PRODUCT SET ACTIVE = @active WHERE ID = @id";
+
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                    cmd.Parameters.Add(new SqlParameter("@id", lblID.Text));
+                    cmd.Parameters.Add(new SqlParameter("@active", false));
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Produto inativo!");
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("Erro ao desativar este produto!" + "\n\n" + Ex.Message);
+                    throw;
+                }
+                finally
+                {
+                    sqlConnect.Close();
+                }
+            }
         }
 
         void GetData()

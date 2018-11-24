@@ -48,9 +48,16 @@
             // 
             // dgvCategory
             // 
+            this.dgvCategory.AllowUserToAddRows = false;
+            this.dgvCategory.AllowUserToDeleteRows = false;
+            this.dgvCategory.AllowUserToResizeColumns = false;
+            this.dgvCategory.AllowUserToResizeRows = false;
             this.dgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategory.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvCategory.Location = new System.Drawing.Point(33, 83);
+            this.dgvCategory.MultiSelect = false;
             this.dgvCategory.Name = "dgvCategory";
+            this.dgvCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCategory.Size = new System.Drawing.Size(517, 252);
             this.dgvCategory.TabIndex = 0;
             // 
@@ -112,7 +119,7 @@
             // 
             this.pbxPlus.BackgroundImage = global::FinalCamilla.Properties.Resources.Plus;
             this.pbxPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbxPlus.Location = new System.Drawing.Point(456, 380);
+            this.pbxPlus.Location = new System.Drawing.Point(395, 380);
             this.pbxPlus.Name = "pbxPlus";
             this.pbxPlus.Size = new System.Drawing.Size(55, 46);
             this.pbxPlus.TabIndex = 3;
@@ -123,7 +130,7 @@
             // 
             this.pbxEdit.BackgroundImage = global::FinalCamilla.Properties.Resources.Edit;
             this.pbxEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbxEdit.Location = new System.Drawing.Point(383, 380);
+            this.pbxEdit.Location = new System.Drawing.Point(456, 380);
             this.pbxEdit.Name = "pbxEdit";
             this.pbxEdit.Size = new System.Drawing.Size(55, 46);
             this.pbxEdit.TabIndex = 2;
