@@ -122,67 +122,78 @@ namespace FinalCamilla.Forms
         private void pbxSave_Click(object sender, EventArgs e)
         {
             SqlConnection sqlConnect = new SqlConnection(connectionString);
-            try
+
+            if (string.IsNullOrEmpty(lblID.Text)) //-----
             {
-                GetData();
-                UserProfile up = (UserProfile)cmbProfile.SelectedItem;
-                User u = new User(name, password, email, up, active);
-                sqlConnect.Open();
-                string sql = "INSERT INTO [USER](NAME, PASSWORD, EMAIL, ACTIVE, FK_USERPROFILE) VALUES (@name, @password, @email, @active, @user)";
+                try
+                {
+                    GetData();
+                    UserProfile up = (UserProfile)cmbProfile.SelectedItem;
+                    User u = new User(name, password, email, up, active);
+                    sqlConnect.Open();
+                    string sql = "INSERT INTO [USER](NAME, PASSWORD, EMAIL, ACTIVE, FK_USERPROFILE) VALUES (@name, @password, @email, @active, @user)";
 
-                SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
 
-                cmd.Parameters.Add(new SqlParameter("@name", u.Name));
-                cmd.Parameters.Add(new SqlParameter("@password", u.Password));
-                cmd.Parameters.Add(new SqlParameter("@email", u.Email));
-                cmd.Parameters.Add(new SqlParameter("@active", u.Active));
-                cmd.Parameters.Add(new SqlParameter("@user", u.UserProfile.Id));
-                cmd.ExecuteNonQuery();
+                    cmd.Parameters.Add(new SqlParameter("@name", u.Name));
+                    cmd.Parameters.Add(new SqlParameter("@password", u.Password));
+                    cmd.Parameters.Add(new SqlParameter("@email", u.Email));
+                    cmd.Parameters.Add(new SqlParameter("@active", u.Active));
+                    cmd.Parameters.Add(new SqlParameter("@user", u.UserProfile.Id));
+                    cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Adicionado com sucesso!");
-                CleanData();
+                    MessageBox.Show("Adicionado com sucesso!");
+                    CleanData();
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao adicionar usuario!" + ex.Message);
-                CleanData();
-            }
-            finally
-            {
-                sqlConnect.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao adicionar usuario!" + ex.Message);
+                    CleanData();
+                }
+                finally
+                {
+                    sqlConnect.Close();
 
-            }
+                }
 
-        }
-
-        void GetData()
-        {
-            name = tbxName.Text;
-            email = tbxEmail.Text;
-            password = tbxPassword.Text;
-            confirm = tbxComfirm.Text;
-            profile = cmbProfile.Text;
-            if (cbxActive.Checked)
-            {
-                active = true;
             }
             else
             {
-                active = false;
+                try
+                {
+                    GetData();
+                    UserProfile up = (UserProfile)cmbProfile.SelectedItem;
+                    sqlConnect.Open();
+                    string sql = "UPDATE [USER](NAME, PASSWORD, EMAIL, ACTIVE, FK_USERPROFILE) VALUES (@name, @password, @email, @active, @user) WHERE ID = @id";
+
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                    cmd.Parameters.Add(new SqlParameter("@name", name));
+                    cmd.Parameters.Add(new SqlParameter("@password", password));
+                    cmd.Parameters.Add(new SqlParameter("@email", email));
+                    cmd.Parameters.Add(new SqlParameter("@active", active));
+                    cmd.Parameters.Add(new SqlParameter("@user", up.Id));
+                    cmd.Parameters.Add(new SqlParameter("@id", lblID.Text));
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Altereções salvas com sucesso!");
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("Erro ao editar este usuário!" + "\n\n" + Ex.Message);
+                    throw;
+                }
+                finally
+                {
+                    sqlConnect.Close();
+
+                    UserAllForm mainForm = new UserAllForm();
+                    mainForm.Show();
+                    this.Hide();
+                }
             }
-
         }
-        void CleanData()
-        {
-            tbxName.Text = "";
-            tbxEmail.Text = "";
-            tbxPassword.Text = "";
-            tbxComfirm.Text = "";
-            cmbProfile.Text = "";
-            cbxActive.Checked = false;
-        }
-
         private void pbxBack_Click(object sender, EventArgs e)
         {
             UserDetailsForm udf = new UserDetailsForm();
@@ -221,6 +232,32 @@ namespace FinalCamilla.Forms
                     sqlConnect.Close();
                 }
             }
+        }
+        void GetData()
+        {
+            name = tbxName.Text;
+            email = tbxEmail.Text;
+            password = tbxPassword.Text;
+            confirm = tbxComfirm.Text;
+            profile = cmbProfile.Text;
+            if (cbxActive.Checked)
+            {
+                active = true;
+            }
+            else
+            {
+                active = false;
+            }
+
+        }
+        void CleanData()
+        {
+            tbxName.Text = "";
+            tbxEmail.Text = "";
+            tbxPassword.Text = "";
+            tbxComfirm.Text = "";
+            cmbProfile.Text = "";
+            cbxActive.Checked = false;
         }
     }
 }

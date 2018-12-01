@@ -81,58 +81,76 @@ namespace FinalCamilla.Forms
 
         private void pbxSave_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlConnect = new SqlConnection(connectionString);
-            try
+             SqlConnection sqlConnect = new SqlConnection(connectionString);
+            if (string.IsNullOrEmpty(lblID.Text)) //-----
             {
-                GetData();
-                UserProfile u = new UserProfile(name, active);
+               
+                try
+                {
+                   
+                    GetData();
+                    UserProfile u = new UserProfile(name, active);
 
 
-                sqlConnect.Open();
-                string sql = "INSERT INTO USER_PROFILE(NAME, ACTIVE) VALUES (@name, @active)";
+                    sqlConnect.Open();
+                    string sql = "INSERT INTO USER_PROFILE(NAME, ACTIVE) VALUES (@name, @active)";
 
-                SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
 
-                cmd.Parameters.Add(new SqlParameter("@name", u.Name));
-                cmd.Parameters.Add(new SqlParameter("@active", u.Active));
+                    cmd.Parameters.Add(new SqlParameter("@name", u.Name));
+                    cmd.Parameters.Add(new SqlParameter("@active", u.Active));
 
 
-                cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Adicionado com sucesso!");
-                CleanData();
+                    MessageBox.Show("Adicionado com sucesso!");
+                    CleanData();
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao adicionar categoria!" + ex.Message);
-                CleanData();
-            }
-            finally
-            {
-                sqlConnect.Close();
-            }
-
-        }
-
-        void GetData()
-        {
-            name = tbxName.Text;
-            if (cbxActive.Checked)
-            {
-                active = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao adicionar categoria!" + ex.Message);
+                    CleanData();
+                }
+                finally
+                {
+                    sqlConnect.Close();
+                }
             }
             else
             {
-                active = false;
-            }
-        }
-        void CleanData()
-        {
-            tbxName.Text = "";
-            cbxActive.Checked = false;
-        }
 
+                try
+                {
+                    sqlConnect.Open();
+                    string sql = "UPDATE USER_PROFILE(NAME, ACTIVE) VALUES (@name, @active) WHERE ID= @id";
+
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                    cmd.Parameters.Add(new SqlParameter("@name", name));
+                    cmd.Parameters.Add(new SqlParameter("@active", active));
+                    cmd.Parameters.Add(new SqlParameter("@id", lblID.Text));
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Altereções salvas com sucesso!");
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("Erro ao editar este perfil!" + "\n\n" + Ex.Message);
+                    throw;
+                }
+                finally
+                {
+                    sqlConnect.Close();
+
+                    UserProfileAllForm mainForm = new UserProfileAllForm();
+                    mainForm.Show();
+                    this.Hide();
+                }
+            }
+         
+        }
+       
         private void pbxBack_Click(object sender, EventArgs e)
         {
             UserProfileAllForm upaf = new UserProfileAllForm();
@@ -172,6 +190,23 @@ namespace FinalCamilla.Forms
                     sqlConnect.Close();
                 }
             }
+        }
+        void GetData()
+        {
+            name = tbxName.Text;
+            if (cbxActive.Checked)
+            {
+                active = true;
+            }
+            else
+            {
+                active = false;
+            }
+        }
+        void CleanData()
+        {
+            tbxName.Text = "";
+            cbxActive.Checked = false;
         }
     }
 }

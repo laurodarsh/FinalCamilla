@@ -34,7 +34,7 @@ namespace FinalCamilla.Forms
             cbmCategory.DisplayMember = "NAME";
             LoadComboBox();
 
-            lblID.Text = idProduct.ToString(); 
+            lblID.Text = idProduct.ToString();
 
             SqlConnection sqlConnect = new SqlConnection(connectionString);
 
@@ -42,17 +42,17 @@ namespace FinalCamilla.Forms
             {
                 try
                 {
-                   
+
                     sqlConnect.Open();
 
                     SqlCommand cmd = new SqlCommand("SELECT * FROM PRODUCT WHERE ID = @id", sqlConnect);
-                 
+
 
                     cmd.Parameters.Add(new SqlParameter("@id", idProduct));
 
-                    Product product = new Product(); 
+                    Product product = new Product();
 
-                    using (SqlDataReader reader = cmd.ExecuteReader()) 
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -80,7 +80,7 @@ namespace FinalCamilla.Forms
                 }
                 finally
                 {
-                   
+
                     sqlConnect.Close();
                 }
             }
@@ -105,7 +105,7 @@ namespace FinalCamilla.Forms
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 while (reader.Read())
                 {
-                    Category c = new Category(Int32.Parse(reader["ID"].ToString()), reader["NAME"].ToString(), bool.Parse(reader["ACTIVE"].ToString()) );
+                    Category c = new Category(Int32.Parse(reader["ID"].ToString()), reader["NAME"].ToString(), bool.Parse(reader["ACTIVE"].ToString()));
                     categories.Add(c);
                 }
             }
@@ -133,35 +133,75 @@ namespace FinalCamilla.Forms
         private void pbxSave_Click(object sender, EventArgs e)
         {
             SqlConnection sqlConnect = new SqlConnection(connectionString);
-            try
+
+            if (string.IsNullOrEmpty(lblID.Text)) //-----
             {
-                GetData();
-                Category c = (Category)cbmCategory.SelectedItem;
-                Product p = new Product(name, price, c, active);
-                sqlConnect.Open();
-                string sql = "INSERT INTO PRODUCT(NAME, PRICE, ACTIVE, FK_PRODUCT) VALUES (@name, @price, @active, @category)";
+                try
+                {
+                    GetData();
+                    Category c = (Category)cbmCategory.SelectedItem;
+                    Product p = new Product(name, price, c, active);
+                    sqlConnect.Open();
+                    string sql = "INSERT INTO PRODUCT(NAME, PRICE, ACTIVE, FK_PRODUCT) VALUES (@name, @price, @active, @category)";
 
-                SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
 
-                cmd.Parameters.Add(new SqlParameter("@name", name));
-                cmd.Parameters.Add(new SqlParameter("@price", price));
-                cmd.Parameters.Add(new SqlParameter("@active", active));
-                cmd.Parameters.Add(new SqlParameter("@category", p.Category.Id));
-                cmd.ExecuteNonQuery();
+                    cmd.Parameters.Add(new SqlParameter("@name", name));
+                    cmd.Parameters.Add(new SqlParameter("@price", price));
+                    cmd.Parameters.Add(new SqlParameter("@active", active));
+                    cmd.Parameters.Add(new SqlParameter("@category", p.Category.Id));
+                    cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Adicionado com sucesso!");
-                CleanData();
+                    MessageBox.Show("Adicionado com sucesso!");
+                    CleanData();
 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao adicionar produto!" + ex.Message);
+                    CleanData();
+                }
+                finally
+                {
+                    sqlConnect.Close();
+
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Erro ao adicionar categoria!" + ex.Message);
-                CleanData();
-            }
-            finally
-            {
-                sqlConnect.Close();
 
+                try
+                {
+                    GetData();
+                    Category c = (Category)cbmCategory.SelectedItem;
+
+                    sqlConnect.Open();
+                    string sql = "UPDATE PRODUCT(NAME, PRICE, ACTIVE, FK_PRODUCT) VALUES (@name, @price, @active, @category) WHERE ID = @id";
+
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                    cmd.Parameters.Add(new SqlParameter("@name", name));
+                    cmd.Parameters.Add(new SqlParameter("@active", active ));
+                    cmd.Parameters.Add(new SqlParameter("@price", price));
+                    cmd.Parameters.Add(new SqlParameter("@category", c.Id));
+                    cmd.Parameters.Add(new SqlParameter("@id", lblID.Text));
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Altereções salvas com sucesso!");
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("Erro ao editar este produto!" + "\n\n" + Ex.Message);
+                    throw;
+                }
+                finally
+                {
+                    sqlConnect.Close();
+
+                    ProductAllForm mainForm = new ProductAllForm();
+                    mainForm.Show();
+                    this.Hide();
+                }
             }
         }
 
@@ -202,7 +242,7 @@ namespace FinalCamilla.Forms
         {
             name = tbxName.Text;
             price = float.Parse(tbxPrice.Text);
-            category= cbmCategory.Text;
+            category = cbmCategory.Text;
             if (cbxActive.Checked)
             {
                 active = true;

@@ -87,36 +87,72 @@ namespace FinalCamilla.Forms
 
         private void pbxSave_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlConnect = new SqlConnection(connectionString);
-            try
+            if (string.IsNullOrEmpty(lblID.Text))
             {
-                GetData();
-                Category c = new Category(name, active);
-                                   
-                    
-             sqlConnect.Open();   string sql = "INSERT INTO CATEGORY(NAME, ACTIVE) VALUES (@name, @active)";
+                SqlConnection sqlConnect = new SqlConnection(connectionString);
+                try
+                {
+                    GetData();
+                    Category c = new Category(name, active);
 
-                SqlCommand cmd = new SqlCommand(sql, sqlConnect);
 
-                cmd.Parameters.Add(new SqlParameter("@name", c.Name));
-                cmd.Parameters.Add(new SqlParameter("@active", c.Active));
+                    sqlConnect.Open(); string sql = "INSERT INTO CATEGORY(NAME, ACTIVE) VALUES (@name, @active)";
 
-                cmd.ExecuteNonQuery();
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
 
-                MessageBox.Show("Adicionado com sucesso!");
-                CleanData();
+                    cmd.Parameters.Add(new SqlParameter("@name", c.Name));
+                    cmd.Parameters.Add(new SqlParameter("@active", c.Active));
 
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Adicionado com sucesso!");
+                    CleanData();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao adicionar categoria!" + ex.Message);
+                    CleanData();
+                }
+                finally
+                {
+                    sqlConnect.Close();
+                }
             }
-            catch (Exception ex)
+
+            else
             {
-                MessageBox.Show("Erro ao adicionar categoria!" + ex.Message);
-                CleanData();
-            }
-            finally
-            {
-                sqlConnect.Close();
-            }
+                SqlConnection sqlConnect = new SqlConnection(connectionString);
 
+                try
+                {
+                    GetData();
+                    sqlConnect.Open();
+                    string sql = "UPDATE CATEGORY(NAME, ACTIVE) VALUES (@name, @active) WHERE ID= @id";
+
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                    cmd.Parameters.Add(new SqlParameter("@name", name ));
+                    cmd.Parameters.Add(new SqlParameter("@active", active));
+                    cmd.Parameters.Add(new SqlParameter("@id", lblID.Text));
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Altereções salvas com sucesso!");
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("Erro ao editar esta categoria!" + "\n\n" + Ex.Message);
+                    throw;
+                }
+                finally
+                {
+                    sqlConnect.Close();
+
+                    CategoryAllForm mainForm = new CategoryAllForm();
+                    mainForm.Show();
+                    this.Hide();
+                }
+            }
         }
 
         private void pbxDelete_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalCamilla.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,15 @@ namespace FinalCamilla.Forms
 {
     public partial class HomeForm : Form
     {
-        public HomeForm()
+        public HomeForm(User user)
         {
             InitializeComponent();
+            if (user.UserProfile.Name != "Gerente")
+            {
+                pbxUser.Enabled = false;
+                pbxProfile.Enabled = false;
+                pbxLog.Enabled = false;
+            }
         }
 
         private void pbxProduct_MouseEnter(object sender, EventArgs e)
