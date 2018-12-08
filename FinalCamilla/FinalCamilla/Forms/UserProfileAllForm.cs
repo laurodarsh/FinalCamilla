@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalCamilla.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,17 +14,19 @@ namespace FinalCamilla.Forms
 {
     public partial class UserProfileAllForm : Form
     {
+        User aux;
         string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096;user id=levelupacademy_SQLLogin_1;pwd=3wwate8gu1;data source=StockControl.mssql.somee.com;persist security info=False;initial catalog=StockControl";
-        public UserProfileAllForm()
+        public UserProfileAllForm(User user)
         {
             InitializeComponent();
+            aux = user;
             ShowData();
             ResizeDataGridView();
         }
 
         private void pbxPlus_Click(object sender, EventArgs e)
         {
-            UserProfileDetailsForm updf = new UserProfileDetailsForm();
+            UserProfileDetailsForm updf = new UserProfileDetailsForm(aux);
             updf.Show();
             this.Hide();
         }
@@ -79,17 +82,12 @@ namespace FinalCamilla.Forms
         {
                 int idUserProfile = Int32.Parse(dgvProfile.SelectedRows[0].Cells[0].Value.ToString());
 
-            UserProfileDetailsForm updf = new UserProfileDetailsForm(idUserProfile);
+            UserProfileDetailsForm updf = new UserProfileDetailsForm(aux);
             updf.Show();
 
             this.Close();
         }
-        private void pbxBack_Click(object sender, EventArgs e)
-        {
-            HomeForm hf = new HomeForm();
-            hf.Show();
-            this.Close();
-        }
+
 
         private void pbxDelete_Click(object sender, EventArgs e)
         {
@@ -111,7 +109,8 @@ namespace FinalCamilla.Forms
 
                 ShowData();
                 MessageBox.Show("Usuário inativo!");
-                
+                Log.SalvarLog("Perfil Excluído", DateTime.Now, "Exclusão");
+
             }
             catch (Exception Ex)
             {
@@ -122,6 +121,13 @@ namespace FinalCamilla.Forms
             {
                 sqlConnect.Close();
             }
+        }
+
+        private void pbxBack_Click(object sender, EventArgs e)
+        {
+            HomeForm hf = new HomeForm(aux);
+            hf.Show();
+            this.Close();
         }
     }
 }

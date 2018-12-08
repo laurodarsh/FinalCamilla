@@ -15,12 +15,13 @@ namespace FinalCamilla.Forms
     public partial class LogForm : Form
     {
         string search = "";
-
+        User aux;
 
         string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096;user id=levelupacademy_SQLLogin_1;pwd=3wwate8gu1;data source=StockControl.mssql.somee.com;persist security info=False;initial catalog=StockControl";
-        public LogForm()
+        public LogForm(User user)
         {
             InitializeComponent();
+            aux = user;
             ShowData();
             ResizeDataGridView();
         }
@@ -74,7 +75,7 @@ namespace FinalCamilla.Forms
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            HomeForm hf = new HomeForm();
+            HomeForm hf = new HomeForm(aux);
             hf.Show();
             this.Close();
         }

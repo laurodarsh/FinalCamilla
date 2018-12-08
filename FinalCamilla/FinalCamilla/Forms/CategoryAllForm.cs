@@ -14,13 +14,15 @@ namespace FinalCamilla.Forms
 {
     public partial class CategoryAllForm : Form
     {
+        User aux;
         string search = "";
 
         string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096;user id=levelupacademy_SQLLogin_1;pwd=3wwate8gu1;data source=StockControl.mssql.somee.com;persist security info=False;initial catalog=StockControl";
 
-        public CategoryAllForm()
+        public CategoryAllForm(User user)
         {
             InitializeComponent();
+            aux = user ;
             ShowData();
             ResizeDataGridView();
         }
@@ -86,7 +88,7 @@ namespace FinalCamilla.Forms
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            HomeForm hf = new HomeForm();
+            HomeForm hf = new HomeForm(aux);
             hf.Show();
             this.Close();
         }
@@ -95,7 +97,7 @@ namespace FinalCamilla.Forms
         {
             int idCategory = Int32.Parse(dgvCategory.SelectedRows[0].Cells[0].Value.ToString());
 
-            CategoryDetailsForm categoryDetails = new CategoryDetailsForm(idCategory);
+            CategoryDetailsForm categoryDetails = new CategoryDetailsForm(idCategory, aux);
             categoryDetails.Show();
 
             this.Close();
@@ -107,7 +109,7 @@ namespace FinalCamilla.Forms
 
         private void pbxPlus_Click(object sender, EventArgs e)
         {
-            CategoryDetailsForm cdf = new CategoryDetailsForm();
+            CategoryDetailsForm cdf = new CategoryDetailsForm(aux);
             cdf.Show();
             this.Close();
         }
@@ -132,7 +134,9 @@ namespace FinalCamilla.Forms
 
                 ShowData();
                 MessageBox.Show("Categoria inativa!");
-                
+
+                Log.SalvarLog("Categoria Excluída", DateTime.Now, "Exclusão");
+
             }
             catch (Exception Ex)
             {

@@ -1,4 +1,5 @@
-﻿using FinalCamilla.Forms;
+﻿using FinalCamilla.Classes;
+using FinalCamilla.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace FinalCamilla
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HomeForm());
+            Application.Run(new lblPassword());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalCamilla.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,10 +16,13 @@ namespace FinalCamilla.Forms
 
     public partial class ProductAllForm : Form
     {
+        User aux;
+
         string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096;user id=levelupacademy_SQLLogin_1;pwd=3wwate8gu1;data source=StockControl.mssql.somee.com;persist security info=False;initial catalog=StockControl";
-        public ProductAllForm()
+        public ProductAllForm(User user)
         {
             InitializeComponent();
+            aux = user;
             ShowData();
             ResizeDataGridView();
         }
@@ -85,7 +89,7 @@ namespace FinalCamilla.Forms
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            HomeForm hf = new HomeForm();
+            HomeForm hf = new HomeForm(aux);
             hf.Show();
             this.Close();
         }
@@ -94,7 +98,7 @@ namespace FinalCamilla.Forms
         {
             int idProduct = Int32.Parse(dgvProduct.SelectedRows[0].Cells[0].Value.ToString());
 
-            ProductDetailsForm pdf = new ProductDetailsForm(idProduct);
+            ProductDetailsForm pdf = new ProductDetailsForm(idProduct, aux);
             pdf.Show();
 
             this.Close();
@@ -102,7 +106,7 @@ namespace FinalCamilla.Forms
 
         private void pbxPlus_Click(object sender, EventArgs e)
         {
-            ProductDetailsForm pdf = new ProductDetailsForm();
+            ProductDetailsForm pdf = new ProductDetailsForm(aux);
             pdf.Show();
             this.Close();
         }
@@ -126,7 +130,8 @@ namespace FinalCamilla.Forms
 
                 ShowData();
                 MessageBox.Show("Produto inativo!");
-                
+                Log.SalvarLog("Produto Excluído", DateTime.Now, "Exclusão");
+
             }
             catch (Exception Ex)
             {

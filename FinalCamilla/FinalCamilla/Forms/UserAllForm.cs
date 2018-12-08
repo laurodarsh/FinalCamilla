@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalCamilla.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,10 +14,13 @@ namespace FinalCamilla.Forms
 {
     public partial class UserAllForm : Form
     {
+        User aux;
+        
         string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096;user id=levelupacademy_SQLLogin_1;pwd=3wwate8gu1;data source=StockControl.mssql.somee.com;persist security info=False;initial catalog=StockControl";
-        public UserAllForm()
+        public UserAllForm(User user)
         {
             InitializeComponent();
+            aux = user;
             ShowData();
             ResizeDataGridView();
 
@@ -74,7 +78,7 @@ namespace FinalCamilla.Forms
         {
            int idCategory = Int32.Parse(dgvUser.SelectedRows[0].Cells[0].Value.ToString());
 
-            UserDetailsForm udf = new UserDetailsForm(idCategory);
+            UserDetailsForm udf = new UserDetailsForm(idCategory, aux);
             udf.Show();
 
             this.Close();
@@ -83,14 +87,14 @@ namespace FinalCamilla.Forms
 
         private void pbxPlus_Click(object sender, EventArgs e)
         {
-            UserDetailsForm udf = new UserDetailsForm();
+            UserDetailsForm udf = new UserDetailsForm(aux);
             udf.Show();
             this.Hide();
         }
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            HomeForm hf = new HomeForm();
+            HomeForm hf = new HomeForm(aux);
             hf.Show();
             this.Close();
         }
@@ -115,7 +119,8 @@ namespace FinalCamilla.Forms
                 
                 ShowData();
                 MessageBox.Show("Usuário inativo!");
-                
+                Log.SalvarLog("Usuário Excluído", DateTime.Now, "Exclusão");
+
             }
             catch (Exception Ex)
             {

@@ -9,7 +9,7 @@ namespace FinalCamilla.Classes
 {
     public static class UserHelper
     {
-        static string connectionString = "workstation id=StockControl.mssql.somee.com;packet size = 4096; user id = luacademy_SQLLogin_1; pwd=msctq6gvt3;data source = StockControl.mssql.somee.com; persist security info=False;initial catalog = StockControl";
+        static string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096;user id=levelupacademy_SQLLogin_1;pwd=3wwate8gu1;data source=StockControl.mssql.somee.com;persist security info=False;initial catalog=StockControl";
 
         public static string Hash(string password)
         {
@@ -23,13 +23,13 @@ namespace FinalCamilla.Classes
 
             SqlConnection sqlConnect = new SqlConnection(connectionString);
             User user = new User();
-
+            int idAux = 0;
             try
             {
                 sqlConnect.Open();
 
                 SqlCommand cmd = new SqlCommand("SELECT * FROM [USER] WHERE NAME = @name", sqlConnect);
-                cmd.Parameters.Add(new SqlParameter("@name", name));//-----
+                cmd.Parameters.Add(new SqlParameter("@name", name));
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -40,13 +40,9 @@ namespace FinalCamilla.Classes
                         user.Active = bool.Parse(reader["ACTIVE"].ToString());
                         user.Email = reader["EMAIL"].ToString();
                         user.Password = reader["PASSWORD"].ToString();
-                        user.UserProfile = new UserProfile
-                        {
-                            Id = Int32.Parse(reader["FK_USERPROFILE"].ToString())
-                        };
+                        idAux = Int32.Parse(reader["FK_USERPROFILE"].ToString());
                     }
                 }
-
 
             }
             catch (Exception ex)
@@ -58,10 +54,46 @@ namespace FinalCamilla.Classes
                 sqlConnect.Close();
             }
 
+            user.UserProfile = LoadProfile(idAux);
             return user;
 
+        }
 
+        private static UserProfile LoadProfile(int idAux)
+        {
 
+            SqlConnection sqlConnect = new SqlConnection(connectionString);
+            UserProfile userProfile = new UserProfile();
+
+            try
+            {
+                sqlConnect.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM USER_PROFILE WHERE ID = @id", sqlConnect);
+                cmd.Parameters.Add(new SqlParameter("@id", idAux));
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        userProfile.Id = Int32.Parse(reader["ID"].ToString());
+                        userProfile.Name = reader["NAME"].ToString();
+                        userProfile.Active = bool.Parse(reader["ACTIVE"].ToString());
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                sqlConnect.Close();
+            }
+
+            return userProfile;
         }
     }
 }

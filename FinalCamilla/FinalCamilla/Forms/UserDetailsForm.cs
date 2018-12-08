@@ -14,6 +14,7 @@ namespace FinalCamilla.Forms
 {
     public partial class UserDetailsForm : Form
     {
+        User aux;
         string name = "";
         string email = "";
         string password = "";
@@ -23,10 +24,11 @@ namespace FinalCamilla.Forms
         List<UserProfile> profiles = new List<UserProfile>();
         string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096;user id=levelupacademy_SQLLogin_1;pwd=3wwate8gu1;data source=StockControl.mssql.somee.com;persist security info=False;initial catalog=StockControl";
 
-        public UserDetailsForm(int idUser)
+        public UserDetailsForm(int idUser, User user2)
         {
 
             InitializeComponent();
+            aux = user2;
             cmbProfile.DisplayMember = "NAME";
             LoadComboBox();
 
@@ -41,7 +43,7 @@ namespace FinalCamilla.Forms
 
                     sqlConnect.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM PRODUCT WHERE ID = @id", sqlConnect);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM [USER] WHERE ID = @id", sqlConnect);
 
 
                     cmd.Parameters.Add(new SqlParameter("@id", idUser));
@@ -83,9 +85,10 @@ namespace FinalCamilla.Forms
             }
         }
 
-        public UserDetailsForm()
+        public UserDetailsForm(User user)
         {
             InitializeComponent();
+            aux = user;
             cmbProfile.DisplayMember = "NAME";
             LoadComboBox();
         }
@@ -143,6 +146,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Adicionado com sucesso!");
+                    Log.SalvarLog("Usuário Inserido", DateTime.Now, "Inserção");
                     CleanData();
 
                 }
@@ -178,6 +182,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Altereções salvas com sucesso!");
+                    Log.SalvarLog("Usuário Editado", DateTime.Now, "Edição");
                 }
                 catch (Exception Ex)
                 {
@@ -188,7 +193,7 @@ namespace FinalCamilla.Forms
                 {
                     sqlConnect.Close();
 
-                    UserAllForm mainForm = new UserAllForm();
+                    UserAllForm mainForm = new UserAllForm(aux);
                     mainForm.Show();
                     this.Hide();
                 }
@@ -196,7 +201,7 @@ namespace FinalCamilla.Forms
         }
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            UserDetailsForm udf = new UserDetailsForm();
+            UserAllForm udf = new UserAllForm(aux);
             udf.Show();
             this.Close();
         }
@@ -221,6 +226,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("usuário inativo!");
+                    Log.SalvarLog("Usuário Excluído", DateTime.Now, "Exclusão");
                 }
                 catch (Exception Ex)
                 {

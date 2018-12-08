@@ -12,10 +12,12 @@ using System.Windows.Forms;
 
 namespace FinalCamilla.Forms
 {
-
+    
 
     public partial class ProductDetailsForm : Form
     {
+        User aux;
+
         string name = "";
         float price = 0;
         string category = "";
@@ -27,10 +29,11 @@ namespace FinalCamilla.Forms
 
         List<Category> categories = new List<Category>();
 
-        public ProductDetailsForm(int idProduct)
+        public ProductDetailsForm(int idProduct, User user)
         {
 
             InitializeComponent();
+            aux = user;
             cbmCategory.DisplayMember = "NAME";
             LoadComboBox();
 
@@ -86,9 +89,10 @@ namespace FinalCamilla.Forms
             }
         }
 
-        public ProductDetailsForm()
+        public ProductDetailsForm(User user)
         {
             InitializeComponent();
+            aux = user;
             cbmCategory.DisplayMember = "NAME";
             LoadComboBox();
         }
@@ -125,7 +129,7 @@ namespace FinalCamilla.Forms
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            ProductAllForm paf = new ProductAllForm();
+            ProductAllForm paf = new ProductAllForm(aux);
             paf.Show();
             this.Hide();
         }
@@ -153,6 +157,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Adicionado com sucesso!");
+                    Log.SalvarLog("Produto Inserido", DateTime.Now, "Inserção");
                     CleanData();
 
                 }
@@ -188,6 +193,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Altereções salvas com sucesso!");
+                    Log.SalvarLog("Produto Editado", DateTime.Now, "Edição");
                 }
                 catch (Exception Ex)
                 {
@@ -198,7 +204,7 @@ namespace FinalCamilla.Forms
                 {
                     sqlConnect.Close();
 
-                    ProductAllForm mainForm = new ProductAllForm();
+                    ProductAllForm mainForm = new ProductAllForm(aux);
                     mainForm.Show();
                     this.Hide();
                 }
@@ -225,6 +231,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Produto inativo!");
+                    Log.SalvarLog("Produto Excluído", DateTime.Now, "Exclusão");
                 }
                 catch (Exception Ex)
                 {

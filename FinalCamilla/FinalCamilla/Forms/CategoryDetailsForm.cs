@@ -14,14 +14,15 @@ namespace FinalCamilla.Forms
 {
     public partial class CategoryDetailsForm : Form
     {
+        User aux;
         string name = "";
         bool active = false;
         string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096;user id=levelupacademy_SQLLogin_1;pwd=3wwate8gu1;data source=StockControl.mssql.somee.com;persist security info=False;initial catalog=StockControl";
-        public CategoryDetailsForm(int idCategory)
+        public CategoryDetailsForm(int idCategory, User user)
         {
 
             InitializeComponent();
-
+            aux = user;
             lblID.Text = idCategory.ToString(); 
 
             SqlConnection sqlConnect = new SqlConnection(connectionString);
@@ -73,14 +74,15 @@ namespace FinalCamilla.Forms
             }
         }
 
-        public CategoryDetailsForm()
+        public CategoryDetailsForm(User user)
         {
             InitializeComponent();
+            aux = user;
         }
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            CategoryAllForm caf = new CategoryAllForm();
+            CategoryAllForm caf = new CategoryAllForm(aux);
             caf.Show();
             this.Close();
         }
@@ -106,6 +108,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Adicionado com sucesso!");
+                    Log.SalvarLog("Categoria Inserida", DateTime.Now, "Inserção");
                     CleanData();
 
                 }
@@ -138,6 +141,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Altereções salvas com sucesso!");
+                    Log.SalvarLog("Categoria Editada", DateTime.Now, "Edição");
                 }
                 catch (Exception Ex)
                 {
@@ -148,7 +152,7 @@ namespace FinalCamilla.Forms
                 {
                     sqlConnect.Close();
 
-                    CategoryAllForm mainForm = new CategoryAllForm();
+                    CategoryAllForm mainForm = new CategoryAllForm(aux);
                     mainForm.Show();
                     this.Hide();
                 }
@@ -174,7 +178,8 @@ namespace FinalCamilla.Forms
 
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("categoria inativa!");
+                    MessageBox.Show("Categoria Inativa!");
+                    Log.SalvarLog("Categoria Excluída", DateTime.Now, "Exclusão");
                 }
                 catch (Exception Ex)
                 {

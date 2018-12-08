@@ -11,14 +11,27 @@ using System.Windows.Forms;
 
 namespace FinalCamilla.Forms
 {
-    public partial class LoginForm : Form
+    public partial class lblPassword : Form
     {
         string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096";
         string login = "";
         string password = "";
         User user;
 
-        public LoginForm()
+        public string ConnectionString
+        {
+            get
+            {
+                return connectionString;
+            }
+
+            set
+            {
+                connectionString = value;
+            }
+        }
+
+        public lblPassword()
         {
             InitializeComponent();
         }
@@ -93,9 +106,32 @@ namespace FinalCamilla.Forms
             tbxPassword.Text = "";
         }
 
+        
 
+        private void label1_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void tbxPassword_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tbxUser_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_MouseEnter(object sender, EventArgs e)
+        {
+            tbxPassword.UseSystemPasswordChar = true;
+        }
+
+        private void lblForgotPassword_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

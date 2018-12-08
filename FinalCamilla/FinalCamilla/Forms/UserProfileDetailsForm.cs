@@ -14,14 +14,16 @@ namespace FinalCamilla.Forms
 {
     public partial class UserProfileDetailsForm : Form
     {
+        User aux;
         string name = "";
         bool active = false;
         string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096;user id=levelupacademy_SQLLogin_1;pwd=3wwate8gu1;data source=StockControl.mssql.somee.com;persist security info=False;initial catalog=StockControl";
 
-        public UserProfileDetailsForm(int idUserProfile)
+        public UserProfileDetailsForm(int idUserProfile, User user)
         {
 
             InitializeComponent();
+            aux = user;
 
             lblID.Text = idUserProfile.ToString();
 
@@ -74,9 +76,10 @@ namespace FinalCamilla.Forms
             }
         }
 
-        public UserProfileDetailsForm()
+        public UserProfileDetailsForm(User user)
         {
             InitializeComponent();
+            aux = user;
         }
 
         private void pbxSave_Click(object sender, EventArgs e)
@@ -104,6 +107,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Adicionado com sucesso!");
+                    Log.SalvarLog("Perfil inserido", DateTime.Now, "Inserção");
                     CleanData();
 
                 }
@@ -133,6 +137,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Altereções salvas com sucesso!");
+                    Log.SalvarLog("Perfil Edtado", DateTime.Now, "Edição");
                 }
                 catch (Exception Ex)
                 {
@@ -143,7 +148,7 @@ namespace FinalCamilla.Forms
                 {
                     sqlConnect.Close();
 
-                    UserProfileAllForm mainForm = new UserProfileAllForm();
+                    UserProfileAllForm mainForm = new UserProfileAllForm(aux);
                     mainForm.Show();
                     this.Hide();
                 }
@@ -153,7 +158,7 @@ namespace FinalCamilla.Forms
        
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            UserProfileAllForm upaf = new UserProfileAllForm();
+            UserProfileAllForm upaf = new UserProfileAllForm(aux);
             upaf.Show();
             this.Hide();
                 
@@ -179,6 +184,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("usuário inativo!");
+                    Log.SalvarLog("Perfil Excluído", DateTime.Now, "Exclusão");
                 }
                 catch (Exception Ex)
                 {

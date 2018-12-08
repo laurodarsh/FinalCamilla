@@ -13,9 +13,12 @@ namespace FinalCamilla.Forms
 {
     public partial class HomeForm : Form
     {
+        User aux;
+
         public HomeForm(User user)
         {
             InitializeComponent();
+            aux = user;
             if (user.UserProfile.Name != "Gerente")
             {
                 pbxUser.Enabled = false;
@@ -68,42 +71,42 @@ namespace FinalCamilla.Forms
 
         private void pbxProduct_Click(object sender, EventArgs e)
         {
-            ProductAllForm paf = new ProductAllForm();
+            ProductAllForm paf = new ProductAllForm(aux);
             paf.Show();
             this.Hide();
         }
 
         private void pbxCategory_Click(object sender, EventArgs e)
         {
-            CategoryAllForm caf = new CategoryAllForm();
+            CategoryAllForm caf = new CategoryAllForm(aux);
             caf.Show();
             this.Hide();
         }
 
         private void pbxUser_Click(object sender, EventArgs e)
         {
-            UserAllForm uaf = new UserAllForm();
+            UserAllForm uaf = new UserAllForm(aux);
             uaf.Show();
             this.Hide();
         }
 
         private void pbxProfile_Click(object sender, EventArgs e)
         {
-            UserProfileAllForm upaf = new UserProfileAllForm();
+            UserProfileAllForm upaf = new UserProfileAllForm(aux);
             upaf.Show();
             this.Hide();
         }
 
         private void pbxLog_Click(object sender, EventArgs e)
         {
-            LogForm lf = new LogForm();
+            LogForm lf = new LogForm(aux);
             lf.Show();
             this.Hide();
         }
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            LoginForm lgf = new LoginForm();
+            lblPassword lgf = new lblPassword();
             lgf.Show();
             this.Hide();
         }
