@@ -1,4 +1,5 @@
 ﻿using FinalCamilla.Classes;
+using FinalCamilla.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,10 @@ namespace FinalCamilla.Forms
                 pbxUser.Enabled = false;
                 pbxProfile.Enabled = false;
                 pbxLog.Enabled = false;
+                pbxUser.BackColor = Color.Gray;
+                pbxProfile.BackColor = Color.Gray;
+                pbxLog.BackColor = Color.Gray;
+
             }
         }
 
@@ -106,7 +111,7 @@ namespace FinalCamilla.Forms
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            lblPassword lgf = new lblPassword();
+            LoginForm lgf = new LoginForm();
             lgf.Show();
             this.Hide();
         }

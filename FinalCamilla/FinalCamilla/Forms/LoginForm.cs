@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace FinalCamilla.Forms
 {
-    public partial class lblPassword : Form
+    public partial class LoginForm : Form
     {
         string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096";
         string login = "";
@@ -31,7 +31,7 @@ namespace FinalCamilla.Forms
             }
         }
 
-        public lblPassword()
+        public LoginForm()
         {
             InitializeComponent();
         }
@@ -130,8 +130,13 @@ namespace FinalCamilla.Forms
 
         private void lblForgotPassword_Click(object sender, EventArgs e)
         {
+            ForgetPassword fp = new ForgetPassword();
+            fp.Show();
+            this.Hide();
 
         }
+
+        
     }
 }
 

@@ -157,7 +157,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Adicionado com sucesso!");
-                    Log.SalvarLog("Produto Inserido", DateTime.Now, "Inserção");
+                    Log.SaveLog(sqlConnect,"Produto Inserido", DateTime.Now, "Inserção");
                     CleanData();
 
                 }
@@ -193,7 +193,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Altereções salvas com sucesso!");
-                    Log.SalvarLog("Produto Editado", DateTime.Now, "Edição");
+                    Log.SaveLog(sqlConnect,"Produto Editado", DateTime.Now, "Edição");
                 }
                 catch (Exception Ex)
                 {
@@ -231,7 +231,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Produto inativo!");
-                    Log.SalvarLog("Produto Excluído", DateTime.Now, "Exclusão");
+                    Log.SaveLog(sqlConnect,"Produto Excluído", DateTime.Now, "Exclusão");
                 }
                 catch (Exception Ex)
                 {

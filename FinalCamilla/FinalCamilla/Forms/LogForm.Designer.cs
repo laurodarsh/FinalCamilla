@@ -121,7 +121,7 @@
             this.Controls.Add(this.pbxBack);
             this.Controls.Add(this.dgvLOG);
             this.Name = "LogForm";
-            this.Text = "LogForm";
+            this.Text = "Log";
             ((System.ComponentModel.ISupportInitialize)(this.dgvLOG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxClean)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSearch)).EndInit();

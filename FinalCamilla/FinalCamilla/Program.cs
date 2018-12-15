@@ -18,7 +18,7 @@ namespace FinalCamilla
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new lblPassword());
+            Application.Run(new LoginForm());
         }
     }
 }

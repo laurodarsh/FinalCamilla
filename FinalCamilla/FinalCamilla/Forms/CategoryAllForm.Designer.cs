@@ -152,6 +152,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(580, 426);
             this.Controls.Add(this.pbxClean);
             this.Controls.Add(this.tbxSearchCategory);
@@ -163,7 +164,7 @@
             this.Controls.Add(this.pbxDelete);
             this.Controls.Add(this.dgvCategory);
             this.Name = "CategoryAllForm";
-            this.Text = "CategoryAllForm";
+            this.Text = "Categoria";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxClean)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSearchCategory)).EndInit();

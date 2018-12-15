@@ -22,7 +22,7 @@ namespace FinalCamilla.Forms
         public CategoryAllForm(User user)
         {
             InitializeComponent();
-            aux = user ;
+            aux = user;
             ShowData();
             ResizeDataGridView();
         }
@@ -33,8 +33,20 @@ namespace FinalCamilla.Forms
             try
             {
                 sqlConnect.Open();
+                SqlCommand cmd;
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM CATEGORY", sqlConnect);
+                if (aux.UserProfile.Name != "Gerente")
+                {
+                    cmd = new SqlCommand("SELECT * FROM CATEGORY WHERE ACTIVE= @active", sqlConnect);
+                    cmd.Parameters.Add(new SqlParameter("@active", true));
+                }
+                else
+                {
+                    cmd = new SqlCommand("SELECT * FROM CATEGORY", sqlConnect);
+                }
+
+
+
                 // SqlDataReader reader = cmd.ExecuteReader();
 
                 cmd.ExecuteNonQuery();
@@ -101,10 +113,10 @@ namespace FinalCamilla.Forms
             categoryDetails.Show();
 
             this.Close();
-      
 
 
-            
+
+
         }
 
         private void pbxPlus_Click(object sender, EventArgs e)
@@ -135,7 +147,7 @@ namespace FinalCamilla.Forms
                 ShowData();
                 MessageBox.Show("Categoria inativa!");
 
-                Log.SalvarLog("Categoria Excluída", DateTime.Now, "Exclusão");
+                Log.SaveLog(sqlConnect, "Categoria Excluída", DateTime.Now, "Exclusão");
 
             }
             catch (Exception Ex)

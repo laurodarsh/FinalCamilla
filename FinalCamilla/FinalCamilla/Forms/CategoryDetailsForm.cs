@@ -108,7 +108,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Adicionado com sucesso!");
-                    Log.SalvarLog("Categoria Inserida", DateTime.Now, "Inserção");
+                    Log.SaveLog(sqlConnect,"Categoria Inserida", DateTime.Now, "Inserção");
                     CleanData();
 
                 }
@@ -141,7 +141,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Altereções salvas com sucesso!");
-                    Log.SalvarLog("Categoria Editada", DateTime.Now, "Edição");
+                    Log.SaveLog(sqlConnect,"Categoria Editada", DateTime.Now, "Edição");
                 }
                 catch (Exception Ex)
                 {
@@ -179,7 +179,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Categoria Inativa!");
-                    Log.SalvarLog("Categoria Excluída", DateTime.Now, "Exclusão");
+                    Log.SaveLog(sqlConnect,"Categoria Excluída", DateTime.Now, "Exclusão");
                 }
                 catch (Exception Ex)
                 {

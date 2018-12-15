@@ -109,7 +109,7 @@ namespace FinalCamilla.Forms
 
                 ShowData();
                 MessageBox.Show("Usuário inativo!");
-                Log.SalvarLog("Perfil Excluído", DateTime.Now, "Exclusão");
+                Log.SaveLog(sqlConnect,"Perfil Excluído", DateTime.Now, "Exclusão");
 
             }
             catch (Exception Ex)

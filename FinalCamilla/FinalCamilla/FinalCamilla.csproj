@@ -66,6 +66,12 @@
     <Compile Include="Forms\CategoryDetailsForm.Designer.cs">
       <DependentUpon>CategoryDetailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ForgetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ForgetPassword.Designer.cs">
+      <DependentUpon>ForgetPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,7 @@
     <Compile Include="Forms\ProductDetailsForm.Designer.cs">
       <DependentUpon>ProductDetailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\sqlCommand.cs" />
     <Compile Include="Forms\UserAllForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CategoryDetailsForm.resx">
       <DependentUpon>CategoryDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ForgetPassword.resx">
+      <DependentUpon>ForgetPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
@@ -184,14 +194,22 @@
     <Content Include="Icons\1600.png" />
     <Content Include="Icons\17239-200.png" />
     <Content Include="Icons\17241-200.png" />
+    <Content Include="Icons\cmicon.png" />
     <Content Include="Icons\delete-sign-icon-remove-button-black-vector-21584667.jpg" />
     <Content Include="Icons\delete-sign.png" />
     <Content Include="Icons\download.png" />
     <Content Include="Icons\images %281%29.png" />
     <Content Include="Icons\images.png" />
     <Content Include="Icons\Edit.png" />
+    <None Include="Resources\70-512.png" />
+    <None Include="Resources\img_231353.png" />
+    <None Include="Resources\log.png" />
+    <None Include="Resources\user_male2-512.png" />
+    <None Include="Resources\img_208889.png" />
+    <None Include="Resources\cmicon.png" />
     <None Include="Resources\lvlup.png" />
     <None Include="Icons\log-128.png" />
+    <None Include="Icons\LevelUp.png" />
     <Content Include="Icons\Search.png" />
     <Content Include="Icons\Plus.png" />
     <Content Include="Icons\_user_profile_icon_1108089.png" />

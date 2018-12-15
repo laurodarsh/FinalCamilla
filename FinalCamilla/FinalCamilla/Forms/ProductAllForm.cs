@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace FinalCamilla.Forms
 {
-    
+
 
     public partial class ProductAllForm : Form
     {
@@ -27,16 +27,26 @@ namespace FinalCamilla.Forms
             ResizeDataGridView();
         }
 
-        
 
-            private void ShowData()
+
+        private void ShowData()
         {
             SqlConnection sqlConnect = new SqlConnection(connectionString);
-            
+
             try
             {
+                SqlCommand cmd;
                 sqlConnect.Open();
-                SqlCommand cmd = new SqlCommand("SELECT PRODUCT.ID, PRODUCT.NAME, PRODUCT.ACTIVE, PRODUCT.PRICE, CATEGORY.NAME FROM PRODUCT INNER JOIN CATEGORY ON PRODUCT.FK_PRODUCT = CATEGORY.ID;", sqlConnect);
+
+                if (aux.UserProfile.Name != "Gerente")
+                {
+                    cmd = new SqlCommand("SELECT PRODUCT.ID, PRODUCT.NAME, PRODUCT.ACTIVE, PRODUCT.PRICE, CATEGORY.NAME FROM PRODUCT INNER JOIN CATEGORY ON PRODUCT.FK_PRODUCT = CATEGORY.ID; WHERE PRODUCT.ACTIVE = @active", sqlConnect);
+                    cmd.Parameters.Add(new SqlParameter("@active", true));
+                }
+                else
+                {
+                    cmd = new SqlCommand("SELECT PRODUCT.ID, PRODUCT.NAME, PRODUCT.ACTIVE, PRODUCT.PRICE, CATEGORY.NAME FROM PRODUCT INNER JOIN CATEGORY ON PRODUCT.FK_PRODUCT = CATEGORY.ID;", sqlConnect);
+                }
 
 
                 cmd.ExecuteNonQuery();
@@ -63,7 +73,7 @@ namespace FinalCamilla.Forms
             dgvProduct.Columns["ID"].Visible = false;
             dgvProduct.Columns["NAME"].HeaderText = "Nome";
             dgvProduct.Columns["ACTIVE"].HeaderText = "Ativo";
-            
+
             dgvProduct.Columns["ACTIVE"].DisplayIndex = 4;
             dgvProduct.Columns["NAME1"].HeaderText = "Categoria";
             dgvProduct.Columns["NAME1"].DisplayIndex = 3;
@@ -130,7 +140,7 @@ namespace FinalCamilla.Forms
 
                 ShowData();
                 MessageBox.Show("Produto inativo!");
-                Log.SalvarLog("Produto Excluído", DateTime.Now, "Exclusão");
+                Log.SaveLog(sqlConnect, "Produto Excluído", DateTime.Now, "Exclusão");
 
             }
             catch (Exception Ex)

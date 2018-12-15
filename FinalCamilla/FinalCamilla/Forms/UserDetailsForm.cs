@@ -139,14 +139,14 @@ namespace FinalCamilla.Forms
                     SqlCommand cmd = new SqlCommand(sql, sqlConnect);
 
                     cmd.Parameters.Add(new SqlParameter("@name", u.Name));
-                    cmd.Parameters.Add(new SqlParameter("@password", u.Password));
+                    cmd.Parameters.Add(new SqlParameter("@password", UserHelper.Hash(u.Password)));
                     cmd.Parameters.Add(new SqlParameter("@email", u.Email));
                     cmd.Parameters.Add(new SqlParameter("@active", u.Active));
                     cmd.Parameters.Add(new SqlParameter("@user", u.UserProfile.Id));
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Adicionado com sucesso!");
-                    Log.SalvarLog("Usuário Inserido", DateTime.Now, "Inserção");
+                    Log.SaveLog(sqlConnect,"Usuário Inserido", DateTime.Now, "Inserção");
                     CleanData();
 
                 }
@@ -174,7 +174,7 @@ namespace FinalCamilla.Forms
                     SqlCommand cmd = new SqlCommand(sql, sqlConnect);
 
                     cmd.Parameters.Add(new SqlParameter("@name", name));
-                    cmd.Parameters.Add(new SqlParameter("@password", password));
+                    cmd.Parameters.Add(new SqlParameter("@password", UserHelper.Hash(password)));
                     cmd.Parameters.Add(new SqlParameter("@email", email));
                     cmd.Parameters.Add(new SqlParameter("@active", active));
                     cmd.Parameters.Add(new SqlParameter("@user", up.Id));
@@ -182,7 +182,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Altereções salvas com sucesso!");
-                    Log.SalvarLog("Usuário Editado", DateTime.Now, "Edição");
+                    Log.SaveLog(sqlConnect,"Usuário Editado", DateTime.Now, "Edição");
                 }
                 catch (Exception Ex)
                 {
@@ -226,7 +226,7 @@ namespace FinalCamilla.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("usuário inativo!");
-                    Log.SalvarLog("Usuário Excluído", DateTime.Now, "Exclusão");
+                    Log.SaveLog(sqlConnect,"Usuário Excluído", DateTime.Now, "Exclusão");
                 }
                 catch (Exception Ex)
                 {

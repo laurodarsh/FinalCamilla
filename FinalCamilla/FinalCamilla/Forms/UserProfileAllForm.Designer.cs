@@ -157,7 +157,7 @@
             this.Controls.Add(this.pbxDelete);
             this.Controls.Add(this.dgvProfile);
             this.Name = "UserProfileAllForm";
-            this.Text = "UserProfileAllForm";
+            this.Text = "Perfil do usuário";
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxClean)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSearch)).EndInit();

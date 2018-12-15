@@ -159,7 +159,7 @@
             this.Controls.Add(this.pbxDelete);
             this.Controls.Add(this.dgvProduct);
             this.Name = "ProductAllForm";
-            this.Text = "ProductAllForm";
+            this.Text = "Produto";
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxClean)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSearch)).EndInit();

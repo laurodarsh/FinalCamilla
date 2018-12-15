@@ -54,7 +54,7 @@
             // 
             // tbxCategory
             // 
-            this.tbxCategory.Location = new System.Drawing.Point(189, 41);
+            this.tbxCategory.Location = new System.Drawing.Point(126, 41);
             this.tbxCategory.Name = "tbxCategory";
             this.tbxCategory.Size = new System.Drawing.Size(167, 20);
             this.tbxCategory.TabIndex = 19;
@@ -83,7 +83,7 @@
             // 
             this.pbxDelete.BackgroundImage = global::FinalCamilla.Properties.Resources.delete_sign_icon_remove_button_black_vector_21584667;
             this.pbxDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbxDelete.Location = new System.Drawing.Point(378, 225);
+            this.pbxDelete.Location = new System.Drawing.Point(315, 225);
             this.pbxDelete.Name = "pbxDelete";
             this.pbxDelete.Size = new System.Drawing.Size(58, 46);
             this.pbxDelete.TabIndex = 23;
@@ -94,7 +94,7 @@
             // 
             this.pbxSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbxSave.BackgroundImage")));
             this.pbxSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbxSave.Location = new System.Drawing.Point(298, 225);
+            this.pbxSave.Location = new System.Drawing.Point(251, 225);
             this.pbxSave.Name = "pbxSave";
             this.pbxSave.Size = new System.Drawing.Size(58, 46);
             this.pbxSave.TabIndex = 22;
@@ -125,7 +125,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 274);
+            this.ClientSize = new System.Drawing.Size(386, 274);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.pbxDelete);
             this.Controls.Add(this.pbxSave);
@@ -135,7 +135,7 @@
             this.Controls.Add(this.lblActive);
             this.Controls.Add(this.lblCategory);
             this.Name = "CategoryDetailsForm";
-            this.Text = "CategotyDetailsForm";
+            this.Text = "Detalhes da categoria";
             ((System.ComponentModel.ISupportInitialize)(this.pbxDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBack)).EndInit();

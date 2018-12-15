@@ -63,6 +63,16 @@ namespace FinalCamilla.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _70_512 {
+            get {
+                object obj = ResourceManager.GetObject("70-512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _user_profile_icon_1108089 {
             get {
                 object obj = ResourceManager.GetObject("_user_profile_icon_1108089", resourceCulture);
@@ -96,6 +106,16 @@ namespace FinalCamilla.Properties {
         internal static System.Drawing.Bitmap Category2 {
             get {
                 object obj = ResourceManager.GetObject("Category2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmicon {
+            get {
+                object obj = ResourceManager.GetObject("cmicon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,6 +163,46 @@ namespace FinalCamilla.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap img_208889 {
+            get {
+                object obj = ResourceManager.GetObject("img_208889", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_231353 {
+            get {
+                object obj = ResourceManager.GetObject("img_231353", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LevelUp {
+            get {
+                object obj = ResourceManager.GetObject("LevelUp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap log {
+            get {
+                object obj = ResourceManager.GetObject("log", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap log_128 {
             get {
                 object obj = ResourceManager.GetObject("log_128", resourceCulture);
@@ -176,6 +236,16 @@ namespace FinalCamilla.Properties {
         internal static System.Drawing.Bitmap Search {
             get {
                 object obj = ResourceManager.GetObject("Search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_male2_512 {
+            get {
+                object obj = ResourceManager.GetObject("user_male2-512", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

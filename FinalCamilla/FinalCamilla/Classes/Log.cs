@@ -88,14 +88,10 @@ namespace FinalCamilla.Classes
             this.Type = type;
         }
 
-        public static void SalvarLog(string description, DateTime date, string type)
+        public static void SaveLog(SqlConnection sqlConnect, string description, DateTime date, string type)
         {
-            string connectionString = "workstation id=StockControl.mssql.somee.com;packet size = 4096; user id = luacademy_SQLLogin_1; pwd=msctq6gvt3;data source = StockControl.mssql.somee.com; persist security info=False;initial catalog = StockControl";
-
-            SqlConnection sqlConnect = new SqlConnection(connectionString);
-
-            //Conectar
-            sqlConnect.Open();
+            
+         
             string sql = "INSERT INTO LOG (DESCRIPTION, DATE, TYPE) VALUES (@description, @date, @type)";
             //string sql = "INSERT INTO CATEGORY(NAME, ACTIVE) VALUES (" 
             //    + this.tbxName.Text + "," + this.cbxActive.Checked + ")";
